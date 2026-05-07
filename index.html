@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMON GLOSS | Экстремальный детейлинг</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        demon: { red: '#ef4444', dark: '#0a0a0a', gray: '#171717' }
+                    },
+                    fontFamily: { oswald: ['Oswald', 'sans-serif'], montserrat: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #0a0a0a; color: white; }
+        h1, h2, h3, .font-oswald { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .neon-text { text-shadow: 0 0 10px rgba(239, 68, 68, 0.7); }
+        .neon-border { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); border: 1px solid #ef4444; }
+        /* SPA Анимация */
+        .page-view { display: none; opacity: 0; transition: opacity 0.3s; }
+        .page-view.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body class="antialiased selection:bg-demon-red selection:text-white overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navigation (Сквозная) -->
+    <nav class="fixed w-full z-50 bg-demon-dark/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="navigate('page-home')">
+                    <i class="ph ph-fire text-demon-red text-4xl"></i>
+                    <span class="font-oswald text-2xl tracking-wider font-bold">DEMON <span class="text-demon-red neon-text">GLOSS</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <button onclick="navigate('page-home')" class="nav-link text-demon-red transition text-sm font-semibold tracking-wide" data-target="page-home">ГЛАВНАЯ</button>
+                    <button onclick="navigate('page-services')" class="nav-link text-gray-300 hover:text-demon-red transition text-sm font-semibold tracking-wide" data-target="page-services">УСЛУГИ</button>
+                    <button onclick="navigate('page-portfolio')" class="nav-link text-gray-300 hover:text-demon-red transition text-sm font-semibold tracking-wide" data-target="page-portfolio">ПОРТФОЛИО</button>
+                    <button onclick="navigate('page-contact')" class="nav-link text-gray-300 hover:text-demon-red transition text-sm font-semibold tracking-wide" data-target="page-contact">КОНТАКТЫ</button>
+                    <button onclick="openModal()" class="bg-demon-red hover:bg-red-600 text-white px-6 py-2 rounded-sm font-oswald text-lg transition-transform hover:scale-105">ЗАПИСАТЬ ЗВЕРЯ</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white"><i class="ph ph-list text-3xl"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-demon-gray border-b border-gray-800 absolute w-full">
+            <div class="px-2 pt-2 pb-6 space-y-1 sm:px-3 text-center flex flex-col gap-2">
+                <button onclick="navigate('page-home')" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-demon-red">Главная</button>
+                <button onclick="navigate('page-services')" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-demon-red">Услуги</button>
+                <button onclick="navigate('page-portfolio')" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-demon-red">Портфолио</button>
+                <button onclick="navigate('page-contact')" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-demon-red">Контакты</button>
+                <a href="tel:+79990006666" class="block py-2 text-xl font-oswald text-demon-red">+7 (999) 000-66-66</a>
+                <button onclick="openModal()" class="w-full mt-4 bg-demon-red text-white px-6 py-3 rounded-sm font-oswald text-lg">ЗАПИСАТЬСЯ</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-20">
+        <!-- СТРАНИЦА 1: ГЛАВНАЯ -->
+        <div id="page-home" class="page-view active">
+            <section class="relative h-[calc(100vh-80px)] flex items-center justify-center">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Темный автомобиль" class="w-full h-full object-cover opacity-40">
+                    <div class="absolute inset-0 bg-gradient-to-t from-demon-dark via-transparent to-demon-dark"></div>
+                </div>
+                <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-none">
+                        ТВОЯ ТАЧКА <br>
+                        <span class="text-demon-red neon-text">БУДЕТ ГОРЕТЬ</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
+                        Премиальный детейлинг для тех, кто не терпит компромиссов. Керамика, полировка и бронирование на уровне искусства.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="openModal()" class="bg-demon-red hover:bg-red-600 text-white px-8 py-4 rounded-sm font-oswald text-xl tracking-wide transition-all neon-border hover:scale-105">
+                            ВЫЗВАТЬ ДЕМОНА БЛЕСКА
+                        </button>
+                        <button onclick="navigate('page-services')" class="border border-gray-500 hover:border-white text-white px-8 py-4 rounded-sm font-oswald text-xl tracking-wide transition-all">
+                            СМОТРЕТЬ УСЛУГИ
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- СТРАНИЦА 2: УСЛУГИ -->
+        <div id="page-services" class="page-view">
+            <section class="py-20 bg-demon-dark">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4">РИТУАЛЫ <span class="text-demon-red">ОБНОВЛЕНИЯ</span></h2>
+                        <div class="w-24 h-1 bg-demon-red mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-demon-gray p-8 rounded-sm border border-gray-800 hover:border-demon-red transition-all duration-300 group">
+                            <i class="ph ph-sparkle text-5xl text-demon-red mb-6 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-2xl font-bold mb-4">ГЛУБОКАЯ ПОЛИРОВКА</h3>
+                            <p class="text-gray-400 mb-6 text-sm leading-relaxed">Снимаем паутину времени. Восстанавливаем заводской блеск лака до состояния зеркала.</p>
+                            <div class="text-xl font-oswald text-white mb-6">от 15 000 ₽</div>
+                            <button onclick="openModal('Полировка')" class="text-demon-red font-bold uppercase text-sm tracking-wider hover:text-white flex items-center gap-2">Заказать <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                        <div class="bg-demon-gray p-8 rounded-sm border border-gray-800 hover:border-demon-red transition-all duration-300 group neon-border relative">
+                            <div class="absolute top-0 right-0 bg-demon-red text-white text-xs font-bold px-3 py-1 font-oswald uppercase">Топ выбор</div>
+                            <i class="ph ph-shield-check text-5xl text-demon-red mb-6 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-2xl font-bold mb-4">БРОНЕПЛЕНКА (PPF)</h3>
+                            <p class="text-gray-400 mb-6 text-sm leading-relaxed">Абсолютная защита от гравия и пескоструя. Полиуретан премиум-класса.</p>
+                            <div class="text-xl font-oswald text-white mb-6">от 60 000 ₽</div>
+                            <button onclick="openModal('Бронепленка')" class="text-demon-red font-bold uppercase text-sm tracking-wider hover:text-white flex items-center gap-2">Заказать <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                        <div class="bg-demon-gray p-8 rounded-sm border border-gray-800 hover:border-demon-red transition-all duration-300 group">
+                            <i class="ph ph-drop text-5xl text-demon-red mb-6 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-2xl font-bold mb-4">КЕРАМИКА 9H</h3>
+                            <p class="text-gray-400 mb-6 text-sm leading-relaxed">Наносим 3 слоя жидкого стекла. Глубокий леденцовый цвет и гидрофобный эффект.</p>
+                            <div class="text-xl font-oswald text-white mb-6">от 25 000 ₽</div>
+                            <button onclick="openModal('Керамика')" class="text-demon-red font-bold uppercase text-sm tracking-wider hover:text-white flex items-center gap-2">Заказать <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- СТРАНИЦА 3: ПОРТФОЛИО -->
+        <div id="page-portfolio" class="page-view">
+            <section class="py-20 bg-demon-dark">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">НАШИ <span class="text-demon-red">ТВОРЕНИЯ</span></h2>
+                    <div class="w-24 h-1 bg-demon-red mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                    <div class="group relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-demon-dark/80 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="font-oswald text-2xl font-bold text-white">ПОЛИРОВКА M5</span>
+                        </div>
+                    </div>
+                    <div class="group relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-demon-dark/80 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="font-oswald text-2xl font-bold text-white">КЕРАМИКА GT-R</span>
+                        </div>
+                    </div>
+                    <div class="group relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1632823471415-3221b0a8f9ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-demon-dark/80 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="font-oswald text-2xl font-bold text-white">САЛОН MAYBACH</span>
+                        </div>
+                    </div>
+                    <div class="group relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541443131876-44b03de101c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-demon-dark/80 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="font-oswald text-2xl font-bold text-white">МАТОВАЯ ПЛЕНКА</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- СТРАНИЦА 4: КОНТАКТЫ (С КАРТОЙ) -->
+        <div id="page-contact" class="page-view">
+            <section class="py-20 bg-demon-gray">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4">ЖДЕМ <span class="text-demon-red">В БОКСЕ</span></h2>
+                        <div class="w-24 h-1 bg-demon-red mx-auto"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-demon-dark border border-gray-800 rounded-sm overflow-hidden">
+                        
+                        <!-- Инфо и форма -->
+                        <div class="p-8 lg:p-12">
+                            <div class="space-y-6 font-oswald text-xl mb-10">
+                                <div class="flex items-center gap-4"><i class="ph ph-phone text-demon-red text-3xl"></i> <a href="tel:+79990006666" class="hover:text-demon-red transition">+7 (999) 000-66-66</a></div>
+                                <div class="flex items-center gap-4"><i class="ph ph-whatsapp-logo text-demon-red text-3xl"></i> <a href="#" class="hover:text-demon-red transition">Написать в WhatsApp</a></div>
+                                <div class="flex items-center gap-4"><i class="ph ph-map-pin text-demon-red text-3xl"></i> г. Москва, ул. Скорости, 13 (Паркинг -2 этаж)</div>
+                                <div class="flex items-center gap-4"><i class="ph ph-clock text-demon-red text-3xl"></i> Ежедневно с 10:00 до 22:00</div>
+                            </div>
+
+                            <form onsubmit="submitForm(event)" class="space-y-4">
+                                <input type="text" placeholder="Ваше имя" required class="w-full bg-demon-gray border border-gray-700 focus:border-demon-red text-white p-4 outline-none rounded-sm transition">
+                                <input type="tel" placeholder="Номер телефона" required class="w-full bg-demon-gray border border-gray-700 focus:border-demon-red text-white p-4 outline-none rounded-sm transition">
+                                <button type="submit" class="w-full bg-demon-red hover:bg-red-600 text-white font-oswald text-xl py-4 mt-2 rounded-sm transition uppercase tracking-wide">Заказать звонок</button>
+                            </form>
+                        </div>
+
+                        <!-- Карта (темная тема Яндекс) -->
+                        <div class="h-[400px] lg:h-auto w-full relative grayscale invert opacity-80 hover:opacity-100 hover:grayscale-0 hover:invert-0 transition duration-500">
+                            <iframe src="https://yandex.ru/map-widget/v1/?ll=37.622504%2C55.753215&z=12" width="100%" height="100%" frameborder="0" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                            <div class="absolute inset-0 bg-demon-dark/20 pointer-events-none"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer (Сквозной) -->
+    <footer class="bg-demon-dark border-t border-gray-900 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 font-oswald">
+            <p>DEMON GLOSS © 2024. Экстремальный детейлинг автомобилей.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Form (Сквозная) -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-demon-gray p-8 border border-demon-red relative w-full max-w-md shadow-[0_0_30px_rgba(239,68,68,0.3)] transform scale-95 transition-transform duration-300" id="modal-content">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition"><i class="ph ph-x text-2xl"></i></button>
+            <h3 class="font-oswald text-3xl mb-2 font-bold text-white"><span class="text-demon-red">ЗАПИСАТЬ</span> ЗВЕРЯ</h3>
+            <p id="modal-service-name" class="text-gray-400 mb-6 text-sm font-montserrat">Оставьте данные, мы перезвоним для брони времени.</p>
+            <form onsubmit="submitForm(event)" class="space-y-4 mt-6">
+                <input type="text" placeholder="Ваше имя" required class="w-full bg-demon-dark border border-gray-700 focus:border-demon-red text-white p-4 outline-none transition font-montserrat">
+                <input type="tel" placeholder="Телефон" required class="w-full bg-demon-dark border border-gray-700 focus:border-demon-red text-white p-4 outline-none transition font-montserrat">
+                <button type="submit" class="w-full bg-demon-red hover:bg-red-600 text-white font-oswald text-xl py-4 mt-2 transition uppercase">Подтвердить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts SPA -->
+    <script>
+        function navigate(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.target === pageId) {
+                    link.classList.add('text-demon-red');
+                    link.classList.remove('text-gray-300');
+                } else {
+                    link.classList.remove('text-demon-red');
+                    link.classList.add('text-gray-300');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        const modal = document.getElementById('booking-modal');
+        const modalContent = document.getElementById('modal-content');
+        const serviceNameText = document.getElementById('modal-service-name');
+
+        function openModal(serviceName = null) {
+            if(serviceName) {
+                serviceNameText.innerText = `Услуга: ${serviceName}. Оставьте данные для расчета.`;
+            } else {
+                serviceNameText.innerText = `Оставьте данные, мы перезвоним для брони времени.`;
+            }
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        }
+
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = "ПРИНЯТО!";
+            btn.classList.replace('bg-demon-red', 'bg-green-600');
+            btn.classList.replace('hover:bg-red-600', 'hover:bg-green-500');
+            
+            setTimeout(() => {
+                closeModal();
+                e.target.reset();
+                btn.innerText = originalText;
+                btn.classList.replace('bg-green-600', 'bg-demon-red');
+                btn.classList.replace('hover:bg-green-500', 'hover:bg-red-600');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
